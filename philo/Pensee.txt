@@ -1,0 +1,4 @@
+- Programme doit s'arreter quand : UN PHILO MEURT / LES REPAS SONT MANGES
+Un philo pense jusqu'a ce qu'il puisse manger.
+
+Apres tt_eat -> Il dort -> tt_sleep
