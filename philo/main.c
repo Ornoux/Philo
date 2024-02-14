@@ -6,7 +6,7 @@
 /*   By: npatron <npatron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:10:07 by npatron           #+#    #+#             */
-/*   Updated: 2024/02/09 21:16:26 by npatron          ###   ########.fr       */
+/*   Updated: 2024/02/13 18:24:55 by npatron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int main(int argc, char **argv)
 {
     t_data	*data;
     t_philo *philo;
-	
 	data = malloc(sizeof(t_data));
+    if (data == NULL)
+        perror("erreur d'allocation");
     philo = NULL;
     if (!check_args(argv, argc, data))
     {
