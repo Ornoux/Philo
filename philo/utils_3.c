@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npatron <npatron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 15:10:07 by npatron           #+#    #+#             */
-/*   Updated: 2024/02/16 20:58:11 by npatron          ###   ########.fr       */
+/*   Created: 2024/02/17 13:49:45 by npatron           #+#    #+#             */
+/*   Updated: 2024/02/17 14:04:27 by npatron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	msg_dead(t_philo *philo, char *s)
 {
-	t_data	*data;
-	t_philo	*philo;
-
-	data = malloc(sizeof(t_data));
-	if (data == NULL)
-		perror("Error, memory.\n");
-	philo = NULL;
-	if (!check_args(argv, argc, data))
+	if (ft_strcmp(s, "dead") == 0)
 	{
-		data->philo = malloc(sizeof(t_philo) * data->nbr_philo);
-		start(data);
-		free(data->forks);
-		free(data->philo);
-		free(data);
-		free(philo);
+		pthread_mutex_lock(&philo->data->print);
+		printf("%lld %d is dead\n", rac(philo), philo->id + 1);
+		pthread_mutex_unlock(&philo->data->print);
 	}
-	(void)philo;
-	return (0);
+}
+
+void	meeting_security_2(t_philo *philo)
+{
+	destroy_prog(philo);
+	pthread_mutex_lock(&philo->data->deadlock);
+	philo->data->dead = true;
+	pthread_mutex_unlock(&philo->data->deadlock);
 }

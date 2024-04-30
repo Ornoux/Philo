@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:08:16 by npatron           #+#    #+#              #
-#    Updated: 2024/02/14 15:58:42 by npatron          ###   ########.fr        #
+#    Updated: 2024/02/26 13:39:22 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ SRC = main.c \
 	  init.c \
 	  routine.c \
 	  elon_musk.c \
+	  utils_3.c \
+	  
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g
-
+CFLAGS = -Wall -Wextra -Werror -g 
 .c.o:
 	gcc $(CFLAGS) -c $< -o ${<:.c=.o}
 

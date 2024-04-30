@@ -6,7 +6,7 @@
 /*   By: npatron <npatron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:44:12 by npatron           #+#    #+#             */
-/*   Updated: 2024/02/14 17:29:43 by npatron          ###   ########.fr       */
+/*   Updated: 2024/02/17 13:49:10 by npatron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,30 @@ void	msg(t_philo *philo, char *s)
 	if (ft_strcmp(s, "fork") == 0)
 	{
 		pthread_mutex_lock(&philo->data->print);
-		printf("%lld %d has taken a fork\n",(get_current_time() - philo->data->start_simulation), philo->id);
+		printf("%lld %d has taken a fork\n", rac(philo), philo->id + 1);
 		pthread_mutex_unlock(&philo->data->print);
 	}
 	else if (ft_strcmp(s, "eat") == 0)
 	{
 		pthread_mutex_lock(&philo->data->print);
-		printf("%lld %d is eating\n",(get_current_time() - philo->data->start_simulation), philo->id);
+		printf("%lld %d is eating\n", rac(philo), philo->id + 1);
 		pthread_mutex_unlock(&philo->data->print);
 	}
 	else if (ft_strcmp(s, "sleep") == 0)
 	{
 		pthread_mutex_lock(&philo->data->print);
-		printf("%lld %d is sleeping\n",(get_current_time() - philo->data->start_simulation), philo->id);
+		printf("%lld %d is sleeping\n", rac(philo), philo->id + 1);
 		pthread_mutex_unlock(&philo->data->print);
 	}
 	else if (ft_strcmp(s, "think") == 0)
 	{
 		pthread_mutex_lock(&philo->data->print);
-		printf("%lld %d is thinking\n",(get_current_time() - philo->data->start_simulation), philo->id);
+		printf("%lld %d is thinking\n", rac(philo), philo->id + 1);
 		pthread_mutex_unlock(&philo->data->print);
 	}
-	else if (ft_strcmp(s, "dead") == 0)
-	{
-		pthread_mutex_lock(&philo->data->print);
-		printf("%lld %d is dead\n",(get_current_time() - philo->data->start_simulation), philo->id);
-		pthread_mutex_unlock(&philo->data->print);
-	}
+}
+
+long long int	rac(t_philo *philo)
+{
+	return ((get_current_time() - philo->data->start_simulation));
 }

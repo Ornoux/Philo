@@ -6,7 +6,7 @@
 /*   By: npatron <npatron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:10:04 by npatron           #+#    #+#             */
-/*   Updated: 2024/02/14 18:29:13 by npatron          ###   ########.fr       */
+/*   Updated: 2024/02/17 13:44:36 by npatron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	init_mutexes(t_data *data)
 	int	i;
 
 	i = -1;
-	data->forks	= malloc(sizeof(pthread_mutex_t) * data->nbr_philo);
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->nbr_philo);
 	while (++i < data->nbr_philo)
 		pthread_mutex_init(&data->forks[i], NULL);
-	i = 0;
 	data->philo[0].r_fork = &data->forks[0];
 	data->philo[0].l_fork = &data->forks[data->nbr_philo - 1];
 	i = 1;
@@ -37,10 +36,10 @@ void	init_mutexes(t_data *data)
 	return ;
 }
 
-void    init_struct(t_data *data)
+void	init_struct(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->nbr_philo)
 	{
@@ -54,7 +53,7 @@ void    init_struct(t_data *data)
 	return ;
 }
 
-void start(t_data *data)
+void	start(t_data *data)
 {
 	int	i;
 
@@ -66,8 +65,8 @@ void start(t_data *data)
 	{
 		pthread_create(&data->philo[i].thread, NULL, routine, &data->philo[i]);
 		i++;
-		printf("thread launcher : %d\n", data->philo[i].id);
 	}
+	i = 0;
 	i = -1;
 	while (++i < data->nbr_philo)
 		pthread_join(data->philo[i].thread, NULL);

@@ -6,42 +6,42 @@
 /*   By: npatron <npatron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:28:05 by npatron           #+#    #+#             */
-/*   Updated: 2024/02/13 18:29:08 by npatron          ###   ########.fr       */
+/*   Updated: 2024/02/16 19:09:05 by npatron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int is_numeric(char c)
+static int	is_numeric(char c)
 {
-    if (c >= '0' && c <= '9')
-        return (0);
-    return (1);
+	if (c >= '0' && c <= '9')
+		return (0);
+	return (1);
 }
 
-static int str_is_numeric(char *str)
+static int	str_is_numeric(char *str)
 {
-    int i;
-    
-    i = 0;
-    while (str[i])
-    {
-        if (is_numeric(str[i]))
-            return (1);
-        i++;
-    }
-    return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (is_numeric(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int lil_atoi(char *s)
+int	lil_atoi(char *s)
 {
-	int i;
-	long long res;
-    int len;
+	int			i;
+	long long	res;
+	int			len;
 
 	i = 0;
 	res = 0;
-    len = 0;
+	len = 0;
 	if (str_is_numeric(s))
 		return (-1);
 	while (s[i])
@@ -55,7 +55,7 @@ int lil_atoi(char *s)
 	return (res);
 }
 
-int	print_error(int	i)
+int	print_error(int i)
 {
 	if (i == 0)
 		printf("Check number of philosophes\n");
@@ -71,6 +71,7 @@ int	print_error(int	i)
 		printf("Check number_meals number\n");
 	return (1);
 }
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned int	i;
